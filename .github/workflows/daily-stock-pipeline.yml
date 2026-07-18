@@ -59,6 +59,10 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e .
 
+      - name: Send notification test
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.notification_test }}
+        run: python src/test_notification.py
+
       - name: Run daily pipeline
         if: ${{ github.event_name != 'workflow_dispatch' || !inputs.notification_test }}
         run: |
@@ -75,7 +79,7 @@ jobs:
           python src/daily_pipeline.py "${args[@]}"
 
       - name: Upload data artifact
-        if: always()
+        if: ${{ always() && (github.event_name != 'workflow_dispatch' || !inputs.notification_test) }}
         uses: actions/upload-artifact@v4
         with:
           name: stock-data
@@ -83,7 +87,7 @@ jobs:
           retention-days: 90
 
       - name: Commit updated CSV files
-        if: success()
+        if: ${{ success() && (github.event_name != 'workflow_dispatch' || !inputs.notification_test) }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
