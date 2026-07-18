@@ -33,7 +33,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--details-limit", type=int, help="fetch only first N symbols for testing")
     parser.add_argument("--score-lookback-days", type=int, default=30)
     parser.add_argument("--top-per-sector", type=int, default=5)
+<<<<<<< HEAD
     parser.add_argument("--simulate-failure", action="store_true", help="raise a test error after weekend check")
+=======
+>>>>>>> 803464d (first commit)
     return parser.parse_args()
 
 
@@ -52,9 +55,12 @@ def main() -> None:
         return
 
     try:
+<<<<<<< HEAD
         if args.simulate_failure:
             raise RuntimeError("simulated pipeline failure for notification testing")
 
+=======
+>>>>>>> 803464d (first commit)
         if not args.skip_symbols:
             log.info("refreshing KMIALLSHR symbols")
             get_stocks.main()

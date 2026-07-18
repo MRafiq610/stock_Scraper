@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 sector,symbol,name
 APPAREL,IMAGE,Image Pakistan Limited
 APPAREL,INKL,International Knitwear Limited
@@ -289,3 +290,296 @@ TRANSPORT,SLGL,Secure Logistics-Trax Group Limited
 VANASPATI & ALLIED INDUSTRIES,POML,Punjab Oil Mills Limited
 VANASPATI & ALLIED INDUSTRIES,SSOM,S.S.Oil Mills Limited
 WOOLLEN,BNWM,Bannu Woollen Mills Limited
+=======
+sector,symbol,name
+APPAREL,IMAGE,Image Pakistan Limited
+APPAREL,INKL,International Knitwear Limited
+APPAREL,STYLERS,Stylers International Limited
+AUTOMOBILE ASSEMBLER,AGTL,Al-Ghazi Tractors Limited
+AUTOMOBILE ASSEMBLER,GAL,Ghandhara Automobiles Limited
+AUTOMOBILE ASSEMBLER,GHNI,Ghandhara Industries Limited
+AUTOMOBILE ASSEMBLER,HCAR,Honda Atlas Cars (Pakistan) Limited
+AUTOMOBILE ASSEMBLER,HINO,Hinopak Motors Limited
+AUTOMOBILE ASSEMBLER,MTL,Millat Tractors Limited
+AUTOMOBILE ASSEMBLER,SAZEW,Sazgar Engineering Works Limited
+AUTOMOBILE PARTS & ACCESSORIES,AGIL,Agriauto Industries Limited
+AUTOMOBILE PARTS & ACCESSORIES,ATBA,Atlas Battery Limited
+AUTOMOBILE PARTS & ACCESSORIES,BWHL,Baluchistan Wheels Limited
+AUTOMOBILE PARTS & ACCESSORIES,EXIDE,Exide Pakistan Limited
+AUTOMOBILE PARTS & ACCESSORIES,GTYR,Ghandhara Tyre & Rubber Company Limited
+AUTOMOBILE PARTS & ACCESSORIES,LOADS,Loads Limited
+AUTOMOBILE PARTS & ACCESSORIES,PTL,Panther Tyres Ltd.
+AUTOMOBILE PARTS & ACCESSORIES,SLM,Service Long March Tyres Limited
+CABLE & ELECTRICAL GOODS,EMCO,Emco Industries Limited
+CABLE & ELECTRICAL GOODS,FCL,Fast Cables Limited
+CABLE & ELECTRICAL GOODS,PAEL,Pak Elektron Limited
+CABLE & ELECTRICAL GOODS,SIEM,Siemens (Pakistan) Engineering
+CABLE & ELECTRICAL GOODS,WAVES,Waves Corporation Limited
+CEMENT,ACPL,Attock Cement Pakistan Limited
+CEMENT,CHCC,Cherat Cement Company Limited
+CEMENT,DCL,Dewan Cement Limited
+CEMENT,DGKC,D.G. Khan Cement Company Limited
+CEMENT,DNCC,Dandot Cement Company Limited
+CEMENT,FCCL,Fauji Cement Company Limited
+CEMENT,FECTC,Fecto Cement Limited
+CEMENT,FLYNG,Flying Cement Company Limited
+CEMENT,GWLC,Gharibwal Cement Limited
+CEMENT,KOHC,Kohat Cement Company Limited
+CEMENT,LUCK,Lucky Cement Limited
+CEMENT,MLCF,Maple Leaf Cement Factory Limited
+CEMENT,PIOC,Pioneer Cement Limited
+CEMENT,POWER,Power Cement Limited
+CEMENT,SMCPL,Safe Mix Concrete Limited
+CEMENT,THCCL,Thatta Cement Company Limited
+CHEMICAL,ARPL,Archroma Pakistan Limited
+CHEMICAL,BERG,Berger Paints Pakistan Limited
+CHEMICAL,BIFO,Biafo Industries Limited
+CHEMICAL,BUXL,Buxly Paints Limited
+CHEMICAL,DAAG,Data Agro Limited
+CHEMICAL,DOL,Descon Oxychem Limited
+CHEMICAL,DYNO,Dynea Pakistan Limited
+CHEMICAL,EPCL,Engro Polymer & Chemicals Limited
+CHEMICAL,GCIL,Ghani Chemical Industries Limited
+CHEMICAL,GCWL,Ghani Chemworld Limited
+CHEMICAL,GGL,Ghani Global Holdings Limited
+CHEMICAL,ICL,Ittehad Chemicals Limted
+CHEMICAL,LCI,Lucky Core Industries Limited
+CHEMICAL,LOTCHEM,Lotte Chemical Pakistan Limited
+CHEMICAL,LPGL,Leiner Pak Gelatine Limited
+CHEMICAL,NRSL,Nimir Resins Limited
+CHEMICAL,PAKOXY,Pakistan Oxygen Limited
+CHEMICAL,SARC,Sardar Chemical Industries Limited
+CHEMICAL,SITC,Sitara Chemical Industries Limited
+CHEMICAL,WAHN,Wah Noble Chemicals Limited
+COMMERCIAL BANKS,BIPL,BankIslami Pakistan Limited
+COMMERCIAL BANKS,FABL,Faysal Bank Limited
+COMMERCIAL BANKS,MEBL,Meezan Bank Limited
+ENGINEERING,ASL,Aisha Steel Mills Limited
+ENGINEERING,BCL,Bolan Castings Limited
+ENGINEERING,BECO,Beco Steel Limited
+ENGINEERING,CSAP,Crescent Steel & Allied Products Limited
+ENGINEERING,DADX,Dadex Eternit Limited
+ENGINEERING,INIL,International Industries Limited
+ENGINEERING,ISL,International Steels Limited
+ENGINEERING,ITTEFAQ,Ittefaq Iron Industries Limited
+ENGINEERING,KSBP,KSB Pumps Company Limited
+ENGINEERING,MSCL,Metropolitan Steel Corporation Limited
+ENGINEERING,MUGHAL,Mughal Iron & Steel Industries Limited
+FERTILIZER,EFERT,Engro Fertilizers Limited
+FERTILIZER,FATIMA,Fatima Fertilizer Company Limited
+FERTILIZER,FFC,Fauji Fertilizer Company Limited
+FOOD & PERSONAL CARE PRODUCTS,BBFL,Big Bird Foods Limited
+FOOD & PERSONAL CARE PRODUCTS,BFAGRO,Barkat Frisian Agro Limited
+FOOD & PERSONAL CARE PRODUCTS,BNL,Bunnys Limited
+FOOD & PERSONAL CARE PRODUCTS,CLOV,Clover Pakistan Limited
+FOOD & PERSONAL CARE PRODUCTS,COLG,Colgate-Palmolive (Pakistan) Limited
+FOOD & PERSONAL CARE PRODUCTS,FCEPL,Frieslandcampina Engro Pakistan Limited
+FOOD & PERSONAL CARE PRODUCTS,FFL,Fauji Foods Limited
+FOOD & PERSONAL CARE PRODUCTS,GDL,Ghani Dairies Limited
+FOOD & PERSONAL CARE PRODUCTS,GIL,Good Luck Industries Ltd.
+FOOD & PERSONAL CARE PRODUCTS,ISIL,Ismail Industries Limited
+FOOD & PERSONAL CARE PRODUCTS,MFFL,Mitchells Fruit Farms Limited
+FOOD & PERSONAL CARE PRODUCTS,MFL,Matco Foods Limited
+FOOD & PERSONAL CARE PRODUCTS,NESTLE,Nestle Pakistan Limited
+FOOD & PERSONAL CARE PRODUCTS,PREMA,At-Tahur Limited
+FOOD & PERSONAL CARE PRODUCTS,QUICE,Quice Food Industries Limited
+FOOD & PERSONAL CARE PRODUCTS,RMPL,Rafhan Maize Products Company Limited
+FOOD & PERSONAL CARE PRODUCTS,SCL,Shield Corporation Limited
+FOOD & PERSONAL CARE PRODUCTS,TOMCL,The Organic Meat Company Limited
+FOOD & PERSONAL CARE PRODUCTS,TREET,Treet Corporation Limited
+FOOD & PERSONAL CARE PRODUCTS,UNITY,Unity Foods Limited
+FOOD & PERSONAL CARE PRODUCTS,UPFL,Unilever Pakistan Foods Limited
+FOOD & PERSONAL CARE PRODUCTS,WAHDAT,Wahdat Poultry Farm Limited
+FOOD & PERSONAL CARE PRODUCTS,ZIL,ZIL Limited
+GLASS & CERAMICS,FRCL,Frontier Ceramics Limited
+GLASS & CERAMICS,GGGL,Ghani Global Glass Limited
+GLASS & CERAMICS,GHGL,Ghani Glass Limited
+GLASS & CERAMICS,GVGL,Ghani Value Glass Limited
+GLASS & CERAMICS,KCL,Karam Ceramics Limited
+GLASS & CERAMICS,STCL,Shabbir Tiles & Ceramics Limited
+GLASS & CERAMICS,TGL,Tariq Glass Industries Limited
+INSURANCE,PAKQATAR,Pak Qatar Family Takaful Limited
+INSURANCE,PQGTL,Pak Qatar General Takaful Limited
+INV. BANKS / INV. COS. / SECURITIES COS.,ENGROH,Engro Holdings Limited
+LEATHER & TANNERIES,BATA,Bata Pakistan Limited
+LEATHER & TANNERIES,LEUL,Leather Up Limited
+LEATHER & TANNERIES,SGF,Service GlobalFootwear Limited
+LEATHER & TANNERIES,SRVI,Service Industries Limited
+MISCELLANEOUS,AKGL,Al-Khair Gadoon Limited
+MISCELLANEOUS,ECOP,Ecopack Limited
+MISCELLANEOUS,GEMPACRA,The Pakistan Credit Rating Agency Ltd
+MISCELLANEOUS,GOC,GOC (Pak) Limited.
+MISCELLANEOUS,MWMP,Mandviwala Mauser Plastic Industries
+MISCELLANEOUS,OML,Olympia Mills Limited
+MISCELLANEOUS,PSEL,Pakistan Services Limited
+MISCELLANEOUS,SHFA,Shifa International Hospitals Limited
+MISCELLANEOUS,UBDL,United Brands Limited
+MISCELLANEOUS,UDLI,UDL International Limited
+MISCELLANEOUS,UDPL,United Distributors Pakistan Limited
+MODARABAS,BFMOD,B.F. Modaraba
+MODARABAS,FANM,First Al-Noor Modaraba
+MODARABAS,FECM,First Elite Capital Modaraba
+MODARABAS,FEM,First Equity Modaraba
+MODARABAS,FFLM,First Fidelity Leasing Modaraba
+MODARABAS,FHAM,First Habib Modaraba
+MODARABAS,FIBLM,First IBL Modaraba
+MODARABAS,FIMM,First Imrooz Modaraba
+MODARABAS,FPJM,First Punjab Modaraba
+MODARABAS,FPRM,First Paramount Modaraba
+MODARABAS,FTMM,First Treet Manufacturing Modaraba
+MODARABAS,FTSM,First Tri-Star Modaraba
+MODARABAS,GEMBCEM,Burj Clean Energy Modaraba(GEM)
+MODARABAS,OLPM,OLP Modaraba
+MODARABAS,ORM,Orient Rental Mod
+MODARABAS,PIM,Popular Islamic Modaraba
+MODARABAS,SINDM,Sindh Modaraba
+MODARABAS,TRSM,Trust Modaraba
+MODARABAS,WASL,Wasl Mobility Modaraba
+OIL & GAS EXPLORATION COMPANIES,MARI,Mari Energies Limited
+OIL & GAS EXPLORATION COMPANIES,OGDC,Oil & Gas Development Company Limited
+OIL & GAS EXPLORATION COMPANIES,PPL,Pakistan Petroleum Limited
+OIL & GAS MARKETING COMPANIES,BPL,Burshane LPG (Pakistan) Limited
+OIL & GAS MARKETING COMPANIES,HTL,Hi-Tech Lubricants Limited
+OIL & GAS MARKETING COMPANIES,PSO,Pakistan State Oil Company Limited
+OIL & GAS MARKETING COMPANIES,SNGP,Sui Northern Gas Pipelines Limited
+OIL & GAS MARKETING COMPANIES,SPSL,Sitara Petroleum Service Limited
+OIL & GAS MARKETING COMPANIES,SSGC,Sui Southern Gas Company Limited
+OIL & GAS MARKETING COMPANIES,WAFI,Wafi Energy Pakistan Limited
+"PAPER, BOARD & PACKAGING",CEPB,Century Paper & Board Mills Limited
+"PAPER, BOARD & PACKAGING",CPPL,Cherat Packaging Limited
+"PAPER, BOARD & PACKAGING",GEMPAPL,Pak Agro Packaging Limited(GEM)
+"PAPER, BOARD & PACKAGING",IPAK,International Packaging Films Limited
+"PAPER, BOARD & PACKAGING",MACFL,MACPAC Films Limited
+"PAPER, BOARD & PACKAGING",MERIT,Merit Packaging Limited
+"PAPER, BOARD & PACKAGING",PKGS,Packages Limited
+"PAPER, BOARD & PACKAGING",PPP,Pakistan Paper Products Limited
+"PAPER, BOARD & PACKAGING",RPL,Roshan Packages Limited
+"PAPER, BOARD & PACKAGING",SPEL,SPEL Limited
+PHARMACEUTICALS,ABOT,Abbott Laboratories (Pakistan) Limited
+PHARMACEUTICALS,AGP,AGP Limited
+PHARMACEUTICALS,BFBIO,BF Biosciences Limited
+PHARMACEUTICALS,CPHL,Citi Pharma Ltd.
+PHARMACEUTICALS,FEROZ,Ferozsons Laboratories Limited
+PHARMACEUTICALS,GLAXO,GlaxoSmithKline Pakistan Limited
+PHARMACEUTICALS,HALEON,Haleon Pakistan Limited
+PHARMACEUTICALS,HINOON,Highnoon Laboratories Limited
+PHARMACEUTICALS,HPL,Hoechst Pakistan Limited
+PHARMACEUTICALS,IBLHL,IBL HealthCare Limited
+PHARMACEUTICALS,LIVEN,Liven Pharma Limited
+PHARMACEUTICALS,MACTER,Macter International Limited
+PHARMACEUTICALS,OTSU,Otsuka Pakistan Limited
+PHARMACEUTICALS,SEARL,The Searle Company Limited
+POWER GENERATION & DISTRIBUTION,EPQL,Engro Powergen Qadirpur Limited
+POWER GENERATION & DISTRIBUTION,GEMMEL,Mughal Energy Limited(GEM)
+POWER GENERATION & DISTRIBUTION,HUBC,The Hub Power Company Limited
+POWER GENERATION & DISTRIBUTION,KEL,K-Electric Limited
+POWER GENERATION & DISTRIBUTION,KOHE,Kohinoor Energy Limited
+POWER GENERATION & DISTRIBUTION,SEL,Sitara Energy Limited
+POWER GENERATION & DISTRIBUTION,SGPL,S.G. Power Limited
+PROPERTY,BRRG,B.R.R Guardian Limited
+PROPERTY,JVDC,Javedan Corporation Limited
+REAL ESTATE INVESTMENT TRUST,DCR,Dolmen City REIT
+REAL ESTATE INVESTMENT TRUST,IREIT,Image Reit
+REAL ESTATE INVESTMENT TRUST,SRR,Signature Residency Reit
+REAL ESTATE INVESTMENT TRUST,TPLRF1,TPL REIT Fund I
+REFINERY,ATRL,Attock Refinery Limited
+REFINERY,CNERGY,Cnergyico PK  Limited
+REFINERY,NRL,National Refinery Limited
+REFINERY,PRL,Pakistan Refinery Limited
+SUGAR & ALLIED INDUSTRIES,ADAMS,Adam Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,ALNRS,Al-Noor Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,BAFS,Baba Farid Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,CHAS,Chashma Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,FRSM,Faran Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,HRPL,Habib Rice Product Limited.
+SUGAR & ALLIED INDUSTRIES,JDWS,JDW Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,JSML,Jauharabad Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,KPUS,Khairpur Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,MIRKS,Mirpurkhas Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,MRNS,Mehran Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,NONS,Noon Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,PMRS,The Premier Sugar Mills
+SUGAR & ALLIED INDUSTRIES,SANSM,Sanghar Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,SASML,Sindh Abadgars Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,SHSML,Shahmurad Sugar Mills Limited
+SUGAR & ALLIED INDUSTRIES,TCORP,Tariq Corporation Limited
+SUGAR & ALLIED INDUSTRIES,TICL,The Thal Industries Corporation Limited
+SYNTHETIC & RAYON,GATI,Gatron (Industries) Limited
+SYNTHETIC & RAYON,IBFL,Ibrahim Fibres Limited
+SYNTHETIC & RAYON,NSRM,The National Silk & Rayon Mills Limited
+SYNTHETIC & RAYON,PSYL,Pakistan Synthetics Limited
+SYNTHETIC & RAYON,RUPL,Rupali Polyester Limited
+TECHNOLOGY & COMMUNICATION,AIRLINK,Air Link Communication Limited
+TECHNOLOGY & COMMUNICATION,AVN,Avanceon Limited
+TECHNOLOGY & COMMUNICATION,ITANZ,Itanz Technologies Limited
+TECHNOLOGY & COMMUNICATION,NETSOL,NetSol Technologies Limited
+TECHNOLOGY & COMMUNICATION,OCTOPUS,Octopus Digital Limited
+TECHNOLOGY & COMMUNICATION,PAKD,Pak Datacom Limited
+TECHNOLOGY & COMMUNICATION,QTECH,Quantum Data Technologies Limited
+TECHNOLOGY & COMMUNICATION,SELECT,Select Technologies Limited
+TECHNOLOGY & COMMUNICATION,STL,Supernet Technologies Limited
+TECHNOLOGY & COMMUNICATION,SYM,Symmetry Group Limited
+TECHNOLOGY & COMMUNICATION,SYS,Systems Limited
+TECHNOLOGY & COMMUNICATION,TELE,Telecard Limited
+TECHNOLOGY & COMMUNICATION,ZAL,Zarea Limited
+TEXTILE COMPOSITE,AHTM,Ahmad Hassan Textile Mills Limited
+TEXTILE COMPOSITE,ANL,Azgard Nine Limited
+TEXTILE COMPOSITE,ANTM,AN Textile Mills Limited
+TEXTILE COMPOSITE,BHAT,Bhanero Textile Mills Limited
+TEXTILE COMPOSITE,BTL,Blessed Textiles Limited
+TEXTILE COMPOSITE,CRTM,The Crescent Textile Mills Limited
+TEXTILE COMPOSITE,FASM,Faisal Spinning Mills Limited
+TEXTILE COMPOSITE,FML,Feroze1888 Mills Limited
+TEXTILE COMPOSITE,FZCM,Fazal Cloth Mills Limited
+TEXTILE COMPOSITE,GATM,Gul Ahmed Textile Mills Limited
+TEXTILE COMPOSITE,GFIL,Ghazi Fabrics International Limited
+TEXTILE COMPOSITE,HAEL,Hala Enterprises Limited
+TEXTILE COMPOSITE,HAFL,Hafiz Limited
+TEXTILE COMPOSITE,ILP,Interloop Limited
+TEXTILE COMPOSITE,KHYT,Khyber Textile Mills Limited
+TEXTILE COMPOSITE,KTML,Kohinoor Textile Mills Limited
+TEXTILE COMPOSITE,MEHT,Mehmood Textile Mills Limited
+TEXTILE COMPOSITE,NML,Nishat Mills Limited
+TEXTILE COMPOSITE,REDCO,Redco Textiles Limited
+TEXTILE COMPOSITE,REWM,Reliance Weaving Mills Limited
+TEXTILE COMPOSITE,SAPT,Sapphire Textile Mills Limited
+TEXTILE COMPOSITE,STML,Shams Textile Mills Limited
+TEXTILE COMPOSITE,SURC,Suraj Cotton Mills Limited
+TEXTILE COMPOSITE,TOWL,Towellers Limited
+TEXTILE COMPOSITE,ZAHID,Zahidjee Textile Mills Limited
+TEXTILE SPINNING,ARCTM,Arctic Textile Mills Limited
+TEXTILE SPINNING,ASTM,Asim Textile Mills Limited
+TEXTILE SPINNING,AWTX,Allawasaya Tex. & Finishing Mills Ltd
+TEXTILE SPINNING,CCM,Crescent Cotton Mills Limited
+TEXTILE SPINNING,CFL,Crescent Fibres Limited
+TEXTILE SPINNING,DFSM,Dewan Farooque Spinning Mills Limited
+TEXTILE SPINNING,DINT,Din Textile Mills Limited
+TEXTILE SPINNING,DMC,D.M. Corporation Limited.
+TEXTILE SPINNING,ELCM,Elahi Cotton Mills Limited
+TEXTILE SPINNING,ELSM,Ellcot Spinning Mills Limited
+TEXTILE SPINNING,GADT,Gadoon Textile Mills Limited
+TEXTILE SPINNING,IDEAL,Ideal Dynamics Limited
+TEXTILE SPINNING,IDRT,Idrees Textile Mills Limited
+TEXTILE SPINNING,JATM,J.A. Textile Mills Limited
+TEXTILE SPINNING,JDMT,Janana De Malucho Textile Mills Limited
+TEXTILE SPINNING,KOHTM,Kohat Textile Mills Limited
+TEXTILE SPINNING,MQTM,Maqbool Textile Mills Limited
+TEXTILE SPINNING,NATM,Nadeem Textile Mills Limited
+TEXTILE SPINNING,SERT,Service Industries Textiles Limited
+TEXTILE SPINNING,SHCM,Shadman Cotton Mills Limited
+TEXTILE SPINNING,SHDT,Shadab Textile Mills Limited
+TEXTILE SPINNING,SNAI,Sana Industries Limited
+TEXTILE SPINNING,SZTM,Shahzad Textile Mills Limited
+TEXTILE SPINNING,TATM,Tata Textile Mills Limited
+TEXTILE WEAVING,ASHT,Ashfaq Textile Mills Limited
+TEXTILE WEAVING,ICCI,ICC Industries Limited
+TEXTILE WEAVING,STJT,Shahtaj Textile Limited
+TEXTILE WEAVING,ZTL,Zephyr Textiles Limited
+TRANSPORT,BLUEX,Blue-Ex Limited
+TRANSPORT,PIBTL,Pakistan International Bulk Terminal
+TRANSPORT,PICT,Pakistan International Container
+TRANSPORT,SLGL,Secure Logistics-Trax Group Limited
+VANASPATI & ALLIED INDUSTRIES,POML,Punjab Oil Mills Limited
+VANASPATI & ALLIED INDUSTRIES,SSOM,S.S.Oil Mills Limited
+WOOLLEN,BNWM,Bannu Woollen Mills Limited
+>>>>>>> 803464d (first commit)

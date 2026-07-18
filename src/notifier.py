@@ -16,6 +16,7 @@ def enabled() -> bool:
     )
 
 
+<<<<<<< HEAD
 def send_notification(title: str, message: str, strict: bool = False) -> bool:
     if os.getenv("TELEGRAM_BOT_TOKEN") and os.getenv("TELEGRAM_CHAT_ID"):
         return send_telegram(title, message, strict=strict)
@@ -35,6 +36,23 @@ def send_notification(title: str, message: str, strict: bool = False) -> bool:
 
 
 def send_telegram(title: str, message: str, strict: bool = False) -> bool:
+=======
+def send_notification(title: str, message: str) -> None:
+    if os.getenv("TELEGRAM_BOT_TOKEN") and os.getenv("TELEGRAM_CHAT_ID"):
+        send_telegram(title, message)
+        return
+
+    if os.getenv("SMTP_HOST") and os.getenv("SMTP_USER") and os.getenv("SMTP_PASSWORD") and os.getenv("EMAIL_TO"):
+        send_email(title, message)
+        return
+
+    webhook_url = os.getenv("NOTIFY_WEBHOOK_URL")
+    if webhook_url:
+        send_webhook(webhook_url, title, message)
+
+
+def send_telegram(title: str, message: str) -> None:
+>>>>>>> 803464d (first commit)
     token = os.environ["TELEGRAM_BOT_TOKEN"]
     chat_id = os.environ["TELEGRAM_CHAT_ID"]
     url = f"https://api.telegram.org/bot{token}/sendMessage"
@@ -43,6 +61,7 @@ def send_telegram(title: str, message: str, strict: bool = False) -> bool:
         "text": f"{title}\n\n{message}",
         "disable_web_page_preview": True,
     }
+<<<<<<< HEAD
     return post(url, strict=strict, json=payload)
 
 
@@ -52,6 +71,17 @@ def send_webhook(webhook_url: str, title: str, message: str, strict: bool = Fals
 
 
 def send_email(title: str, message: str, strict: bool = False) -> bool:
+=======
+    post(url, json=payload)
+
+
+def send_webhook(webhook_url: str, title: str, message: str) -> None:
+    payload = {"text": f"{title}\n\n{message}", "content": f"{title}\n\n{message}"}
+    post(webhook_url, json=payload)
+
+
+def send_email(title: str, message: str) -> None:
+>>>>>>> 803464d (first commit)
     smtp_host = os.environ["SMTP_HOST"]
     smtp_port = int(os.getenv("SMTP_PORT", "587"))
     smtp_user = os.environ["SMTP_USER"]
@@ -70,6 +100,7 @@ def send_email(title: str, message: str, strict: bool = False) -> bool:
             smtp.starttls()
             smtp.login(smtp_user, smtp_password)
             smtp.send_message(msg)
+<<<<<<< HEAD
         print(f"email notification sent to {email_to}")
         return True
     except Exception as e:
@@ -91,3 +122,15 @@ def post(url: str, strict: bool = False, **kwargs: Any) -> bool:
             raise RuntimeError(message) from e
         print(message)
         return False
+=======
+    except Exception as e:
+        print(f"email notification failed: {e}")
+
+
+def post(url: str, **kwargs: Any) -> None:
+    try:
+        resp = requests.post(url, timeout=15, **kwargs)
+        resp.raise_for_status()
+    except Exception as e:
+        print(f"notification failed: {e}")
+>>>>>>> 803464d (first commit)
