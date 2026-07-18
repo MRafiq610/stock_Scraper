@@ -10,6 +10,21 @@ on:
         required: false
         default: false
         type: boolean
+      force_run:
+        description: "Run even on Saturday/Sunday"
+        required: false
+        default: false
+        type: boolean
+      details_limit:
+        description: "Optional test limit for stock details, for example 5"
+        required: false
+        default: ""
+        type: string
+      simulate_failure:
+        description: "Simulate pipeline failure to test error email"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -20,6 +35,9 @@ jobs:
     timeout-minutes: 45
 
     env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      NOTIFY_WEBHOOK_URL: ${{ secrets.NOTIFY_WEBHOOK_URL }}
       SMTP_HOST: ${{ secrets.SMTP_HOST }}
       SMTP_PORT: ${{ secrets.SMTP_PORT }}
       SMTP_USER: ${{ secrets.SMTP_USER }}
@@ -41,11 +59,27 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e .
 
+      - name: Send notification test
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.notification_test }}
+        run: python src/test_notification.py
+
       - name: Run daily pipeline
-        run: python src/daily_pipeline.py --details-delay 0
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.notification_test }}
+        run: |
+          args=(--details-delay 0)
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force_run }}" = "true" ]; then
+            args+=(--force)
+          fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ inputs.details_limit }}" ]; then
+            args+=(--details-limit "${{ inputs.details_limit }}")
+          fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.simulate_failure }}" = "true" ]; then
+            args+=(--simulate-failure)
+          fi
+          python src/daily_pipeline.py "${args[@]}"
 
       - name: Upload data artifact
-        if: always()
+        if: ${{ always() && (github.event_name != 'workflow_dispatch' || !inputs.notification_test) }}
         uses: actions/upload-artifact@v4
         with:
           name: stock-data
@@ -53,7 +87,7 @@ jobs:
           retention-days: 90
 
       - name: Commit updated CSV files
-        if: success()
+        if: ${{ success() && (github.event_name != 'workflow_dispatch' || !inputs.notification_test) }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
