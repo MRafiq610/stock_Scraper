@@ -12,12 +12,12 @@ on:
         type: boolean
       force_run:
         description: "Run even on Saturday/Sunday"
-        required: false
+        required: true
         default: false
         type: boolean
       details_limit:
         description: "Optional test limit for stock details, for example 5"
-        required: false
+        required: true
         default: ""
         type: string
       simulate_failure:
