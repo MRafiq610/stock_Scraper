@@ -10,6 +10,7 @@ def main() -> None:
     notifier.send_notification(
         "Stock pipeline notification test",
         f"Email notification is configured correctly.\nSent at: {sent_at}",
+        strict=True,
     )
     print("notification test completed")
 
