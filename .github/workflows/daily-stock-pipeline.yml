@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "0 13 * * 1-5"
   workflow_dispatch:
+    inputs:
+      notification_test:
+        description: "Send a test notification only"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
