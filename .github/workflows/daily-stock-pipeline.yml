@@ -59,6 +59,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e .
 
+      - name: Validate committed CSV files
+        run: python -m unittest discover -s tests -v
+
       - name: Send notification test
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.notification_test }}
         run: python src/test_notification.py

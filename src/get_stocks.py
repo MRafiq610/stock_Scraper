@@ -67,8 +67,20 @@ def fetch_all_symbols(session: requests.Session) -> list[str]:
 def load_existing(path: Path) -> set[str]:
     if not path.exists():
         return set()
-    with path.open(newline="", encoding="utf-8") as f:
-        return {row["symbol"] for row in csv.DictReader(f)}
+    with path.open(newline="", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        if reader.fieldnames is None:
+            return set()
+        if "symbol" not in reader.fieldnames:
+            raise ValueError(
+                f"invalid CSV header in {path}: expected a 'symbol' column, "
+                f"found {reader.fieldnames}"
+            )
+        return {
+            symbol
+            for row in reader
+            if (symbol := (row.get("symbol") or "").strip())
+        }
 
 
 def upsert(path: Path, symbols: list[str]) -> int:
@@ -79,7 +91,7 @@ def upsert(path: Path, symbols: list[str]) -> int:
         return 0
 
     path.parent.mkdir(parents=True, exist_ok=True)
-    write_header = not path.exists()
+    write_header = not path.exists() or path.stat().st_size == 0
     with path.open("a", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         if write_header:
