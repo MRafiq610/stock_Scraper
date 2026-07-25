@@ -10,13 +10,13 @@ Manual testing will be performed by the human reviewer. AI coding agents must no
 
 | Phase | Roadmap priority | Outcome | Depends on |
 | --- | --- | --- | --- |
-| [phase-01](phase-01/01-scope-and-contract.md) | Priority 1 | Missing-data completeness is explicit in ranking and LLM outputs | V1 |
-| [phase-02](phase-02/01-scope-and-weight-model.md) | Priority 2 | Scoring weights are configurable, normalized, and value/income oriented | Phase 01 |
-| [phase-03](phase-03/01-architecture-and-data-contracts.md) | Priority 3 | Quarterly ratios and P&L history feed a new quality axis without look-ahead | Phases 01-02 |
-| [phase-04](phase-04/01-scope-privacy-and-contract.md) | Priority 4 | Portfolio context is joined safely into decision-review outputs | Phase 01 |
-| [phase-05](phase-05/01-scope-and-rating-contract.md) | Priority 5 | Latest eligible AKD rating and target are shown beside scraper results | Phase 01 |
-| [phase-06](phase-06/01-scope-and-risk-model.md) | Priority 6 | Rolling close-to-close volatility makes risk visible | Sufficient daily history |
-| [phase-07](phase-07/01-scope-and-confidence-rules.md) | Priority 7 | Sector sample size has an unambiguous confidence label | Phase 01 |
+| [✅phase-01](✅phase-01/01-scope-and-contract.md) | Priority 1 | Missing-data completeness is explicit in ranking and LLM outputs | V1 |
+| [✅phase-02](✅phase-02/01-scope-and-weight-model.md) | Priority 2 | Scoring weights are configurable, normalized, and value/income oriented | Phase 01 |
+| [✅phase-03](✅phase-03/01-architecture-and-data-contracts.md) | Priority 3 | Quarterly ratios and P&L history feed a new quality axis without look-ahead | Phases 01-02 |
+| [✅phase-04](✅phase-04/01-scope-privacy-and-contract.md) | Priority 4 | Portfolio context is joined safely into decision-review outputs | Phase 01 |
+| [phase-05 — skipped](phase-05/01-scope-and-rating-contract.md) | Priority 5 | Skipped: no reliable automated AKD source | Phase 01 |
+| [✅phase-06](✅phase-06/01-scope-and-risk-model.md) | Priority 6 | Rolling close-to-close volatility makes risk visible | Sufficient daily history |
+| [✅phase-07](✅phase-07/01-scope-and-confidence-rules.md) | Priority 7 | Sector sample size has an unambiguous confidence label | Phase 01 |
 | [phase-08-bonus](phase-08-bonus/01-scope-and-observability-model.md) | Bonus | Provenance, freshness, and pipeline-health signals make mixed-cadence data auditable | Phases 03-05 |
 
 ## Recommended delivery order

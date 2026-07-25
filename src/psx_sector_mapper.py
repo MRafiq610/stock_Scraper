@@ -17,6 +17,11 @@ from typing import Optional
 import requests
 from pydantic import BaseModel
 
+try:
+    from .safe_io import atomic_write_csv
+except ImportError:
+    from safe_io import atomic_write_csv
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("psx_sector_mapper")
 
@@ -24,6 +29,7 @@ PSX_SYMBOLS_URL = "https://dps.psx.com.pk/symbols"
 DATA_DIR = Path("data")
 KMIALLSHR_CSV = DATA_DIR / "kmiallshr_companies.csv"
 OUTPUT_CSV = DATA_DIR / "kmiallshr_by_sector.csv"
+MIN_MAPPING_COVERAGE = 0.90
 
 HEADERS = {
     "Accept": "application/json, text/javascript, */*; q=0.01",
@@ -87,11 +93,9 @@ def build_sector_mapping(
 
 
 def write_csv(path: Path, rows: list[dict]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["sector", "symbol", "name"])
-        writer.writeheader()
-        writer.writerows(rows)
+    if not rows:
+        raise ValueError("refusing to replace sector mapping with an empty result")
+    atomic_write_csv(path, rows, ["sector", "symbol", "name"])
 
 
 def main() -> None:
@@ -101,6 +105,11 @@ def main() -> None:
 
     psx_symbols = fetch_psx_symbols(session)
     rows, unmatched = build_sector_mapping(kmiallshr_symbols, psx_symbols)
+    if not kmiallshr_symbols or len(rows) / len(kmiallshr_symbols) < MIN_MAPPING_COVERAGE:
+        raise ValueError(
+            f"refusing to replace sector mapping: matched "
+            f"{len(rows)}/{len(kmiallshr_symbols)} symbols"
+        )
 
     write_csv(OUTPUT_CSV, rows)
     log.info("wrote %d rows -> %s", len(rows), OUTPUT_CSV)

@@ -14,6 +14,11 @@ from pathlib import Path
 import requests
 from pydantic import BaseModel
 
+try:
+    from .safe_io import atomic_write_csv
+except ImportError:
+    from safe_io import atomic_write_csv
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("kmiallshr_scraper")
 
@@ -90,13 +95,11 @@ def upsert(path: Path, symbols: list[str]) -> int:
     if not new_symbols:
         return 0
 
-    path.parent.mkdir(parents=True, exist_ok=True)
-    write_header = not path.exists() or path.stat().st_size == 0
-    with path.open("a", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        if write_header:
-            writer.writerow(["symbol"])
-        writer.writerows([s] for s in new_symbols)
+    atomic_write_csv(
+        path,
+        [{"symbol": symbol} for symbol in sorted(existing | set(new_symbols))],
+        ["symbol"],
+    )
 
     return len(new_symbols)
 

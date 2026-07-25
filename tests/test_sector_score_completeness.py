@@ -150,6 +150,7 @@ class CompletenessExportTests(unittest.TestCase):
             latest_path = root / "latest_sector_rankings.csv"
             llm_path = root / "llm" / "latest_sector_summary.csv"
             monthly_dir = root / "monthly"
+            portfolio_path = root / "portfolio.csv"
 
             detail_fields = ["date", "symbol", *pipeline.DETAIL_FIELDS]
             rows = [
@@ -181,6 +182,7 @@ class CompletenessExportTests(unittest.TestCase):
                 ],
                 ["sector", "symbol", "name"],
             )
+            write_csv(portfolio_path, [{"symbol": "FULL"}], ["symbol"])
             old_fields = [*pipeline.SCORE_FIELDS, "legacy_note"]
             historical_row = {field: "" for field in old_fields}
             historical_row.update(
@@ -211,6 +213,7 @@ class CompletenessExportTests(unittest.TestCase):
                 "LATEST_RANKINGS_CSV": latest_path,
                 "LLM_DIR": llm_path.parent,
                 "MONTHLY_DIR": monthly_dir,
+                "PORTFOLIO_CSV": portfolio_path,
             }
             with patch.multiple(pipeline, **patches):
                 pipeline.run(as_of="2026-07-25")
@@ -235,12 +238,22 @@ class CompletenessExportTests(unittest.TestCase):
             history = read_csv(history_path)
             current = [row for row in history if row["date"] == "2026-07-25"]
             self.assertEqual(len(current), 2)
+            self.assertEqual({row["portfolio_status"] for row in current}, {""})
             old = next(row for row in history if row["date"] == "2026-06-01")
             self.assertEqual(old["data_completeness_count"], "")
             self.assertEqual(old["data_completeness_label"], "")
             self.assertEqual(old["legacy_note"], "keep me")
             updated = next(row for row in current if row["symbol"] == "FULL")
             self.assertEqual(updated["legacy_note"], "keep on update")
+            latest = {row["symbol"]: row for row in read_csv(latest_path)}
+            self.assertEqual(latest["FULL"]["portfolio_status"], "held")
+            self.assertEqual(latest["LOW"]["portfolio_status"], "not_held")
+            monthly = {
+                row["symbol"]: row
+                for row in read_csv(monthly_dir / "2026-07_sector_scores.csv")
+            }
+            self.assertEqual(monthly["FULL"]["portfolio_status"], "held")
+            self.assertEqual(monthly["LOW"]["portfolio_status"], "not_held")
 
 
 if __name__ == "__main__":

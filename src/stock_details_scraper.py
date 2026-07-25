@@ -19,6 +19,11 @@ from typing import Any, Optional
 
 import requests
 
+try:
+    from .safe_io import atomic_write_csv
+except ImportError:
+    from safe_io import atomic_write_csv
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("stock_details_scraper")
 
@@ -190,12 +195,12 @@ def upsert(path: Path, new_rows: list[dict]) -> tuple[int, int]:
             updated += 1
         existing[key] = str_row
 
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=FIELDNAMES)
-        writer.writeheader()
-        for key in sorted(existing):
-            writer.writerow(existing[key])
+    atomic_write_csv(
+        path,
+        [existing[key] for key in sorted(existing)],
+        FIELDNAMES,
+        extrasaction="raise",
+    )
     return added, updated
 
 
