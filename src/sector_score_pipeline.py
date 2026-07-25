@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import math
 from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -51,6 +52,17 @@ DETAIL_FIELDS = [
     "peg_ratio",
 ]
 
+CORE_COMPLETENESS_FIELDS = {
+    "P/E": "price_to_earnings",
+    "P/B": "price_to_book",
+    "PEG": "peg_ratio",
+    "EPS": "eps",
+    "Net margin": "net_income_margin",
+    "Dividend yield": "dividend_yield",
+}
+DATA_COMPLETENESS_TOTAL = len(CORE_COMPLETENESS_FIELDS)
+DATA_COMPLETENESS_PARTIAL_MIN = 3
+
 SCORE_FIELDS = [
     "date",
     "sector",
@@ -60,6 +72,10 @@ SCORE_FIELDS = [
     "sector_count",
     "final_score",
     "quantitative_score",
+    "data_completeness_count",
+    "data_completeness_total",
+    "data_completeness_pct",
+    "data_completeness_label",
     "news_score",
     "news_label",
     "news_note",
@@ -92,6 +108,10 @@ LLM_FIELDS = [
     "sector_count",
     "final_score",
     "quantitative_score",
+    "data_completeness_count",
+    "data_completeness_total",
+    "data_completeness_pct",
+    "data_completeness_label",
     "news_score",
     "news_label",
     "trend_label",
@@ -130,6 +150,13 @@ def read_optional_csv(path: Path) -> list[dict]:
     return read_csv(path) if path.exists() else []
 
 
+def read_csv_fieldnames(path: Path) -> list[str]:
+    if not path.exists():
+        return []
+    with path.open(newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f).fieldnames or [])
+
+
 def write_csv(path: Path, rows: Iterable[dict], fieldnames: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as f:
@@ -139,12 +166,15 @@ def write_csv(path: Path, rows: Iterable[dict], fieldnames: list[str]) -> None:
 
 
 def upsert_csv(path: Path, rows: list[dict], fieldnames: list[str], key_fields: list[str]) -> None:
+    existing_fieldnames = read_csv_fieldnames(path)
     existing = read_csv(path) if path.exists() else []
     merged = {tuple(row.get(k, "") for k in key_fields): row for row in existing}
     for row in rows:
-        merged[tuple(row.get(k, "") for k in key_fields)] = row
+        key = tuple(row.get(k, "") for k in key_fields)
+        merged[key] = {**merged.get(key, {}), **row}
     sorted_rows = sorted(merged.values(), key=lambda row: tuple(row.get(k, "") for k in key_fields))
-    write_csv(path, sorted_rows, fieldnames)
+    extra_fieldnames = [field for field in existing_fieldnames if field not in fieldnames]
+    write_csv(path, sorted_rows, [*fieldnames, *extra_fieldnames])
 
 
 def parse_number(value: Any) -> Optional[float]:
@@ -161,7 +191,8 @@ def parse_number(value: Any) -> Optional[float]:
         multiplier = {"K": 1_000, "M": 1_000_000, "B": 1_000_000_000, "T": 1_000_000_000_000}[suffix]
 
     try:
-        return float(text) * multiplier
+        parsed = float(text) * multiplier
+        return parsed if math.isfinite(parsed) else None
     except ValueError:
         return None
 
@@ -301,6 +332,17 @@ def add_calculated_fields(
         period_return = pct_change(baseline_close, close_price)
         distance_high = pct_change(close_price, high_52wk)
         distance_low = pct_change(low_52wk, close_price)
+        completeness_values = {
+            field: parse_number(row.get(field))
+            for field in CORE_COMPLETENESS_FIELDS.values()
+        }
+        completeness_count = sum(value is not None for value in completeness_values.values())
+        if completeness_count == DATA_COMPLETENESS_TOTAL:
+            completeness_label = "complete"
+        elif completeness_count >= DATA_COMPLETENESS_PARTIAL_MIN:
+            completeness_label = "partial"
+        else:
+            completeness_label = "low"
 
         calculated.append({
             **row,
@@ -308,15 +350,32 @@ def add_calculated_fields(
             "_period_return": period_return if period_return is not None else daily_return,
             "_distance_high": distance_high,
             "_distance_low": distance_low,
+            "_data_completeness_count": completeness_count,
+            "_data_completeness_label": completeness_label,
             "_market_cap_num": parse_number(row.get("market_cap")),
             "_weekly_volume_num": parse_number(row.get("weekly_avg_volume")),
             "_free_float_pct_num": parse_number(row.get("free_float_pct")),
-            "_dividend_yield_num": parse_number(row.get("dividend_yield")),
-            "_eps_num": parse_number(row.get("eps")),
-            "_net_margin_num": parse_number(row.get("net_income_margin")),
-            "_pbv_num": positive_number(row.get("price_to_book")),
-            "_pe_num": positive_number(row.get("price_to_earnings")),
-            "_peg_num": positive_number(row.get("peg_ratio")),
+            "_dividend_yield_num": completeness_values["dividend_yield"],
+            "_eps_num": completeness_values["eps"],
+            "_net_margin_num": completeness_values["net_income_margin"],
+            "_pbv_num": (
+                completeness_values["price_to_book"]
+                if completeness_values["price_to_book"] is not None
+                and completeness_values["price_to_book"] > 0
+                else None
+            ),
+            "_pe_num": (
+                completeness_values["price_to_earnings"]
+                if completeness_values["price_to_earnings"] is not None
+                and completeness_values["price_to_earnings"] > 0
+                else None
+            ),
+            "_peg_num": (
+                completeness_values["peg_ratio"]
+                if completeness_values["peg_ratio"] is not None
+                and completeness_values["peg_ratio"] > 0
+                else None
+            ),
         })
     return calculated
 
@@ -338,6 +397,10 @@ def label_trend(period_return: Optional[float], daily_return: Optional[float]) -
 
 def key_reason(row: dict) -> str:
     reasons = []
+    if row.get("data_completeness_label") == "low":
+        reasons.append(
+            f"limited data {row['data_completeness_count']}/{row['data_completeness_total']}"
+        )
     if parse_number(row["period_return_pct"]) is not None:
         reasons.append(f"{row['period_return_pct']}% period return")
     if row.get("price_to_earnings"):
@@ -414,6 +477,12 @@ def score_sector(rows: list[dict], news: dict[tuple[str, str], dict]) -> list[di
             "sector_count": str(len(rows)),
             "final_score": round_score(final_score),
             "quantitative_score": round_score(quantitative_score),
+            "data_completeness_count": str(row["_data_completeness_count"]),
+            "data_completeness_total": str(DATA_COMPLETENESS_TOTAL),
+            "data_completeness_pct": round_score(
+                (row["_data_completeness_count"] / DATA_COMPLETENESS_TOTAL) * 100
+            ),
+            "data_completeness_label": row["_data_completeness_label"],
             "news_score": format_number(news_score),
             "news_label": news_row.get("news_label", ""),
             "news_note": news_row.get("news_note", ""),

@@ -122,6 +122,25 @@ The final score is:
 Missing values receive a neutral score of 50 so incomplete fundamentals do not
 automatically become the best or worst stock in a sector.
 
+Each scored row also reports evidence coverage for these six daily fundamental
+fields: P/E, P/B, PEG, EPS, net margin, and dividend yield. The additive
+`data_completeness_count`, `data_completeness_total`,
+`data_completeness_pct`, and `data_completeness_label` columns appear in score
+history, latest rankings, monthly exports, and the compact LLM summary.
+
+Completeness describes evidence coverage, not score quality:
+
+- `low` means fewer than three of the six fields are populated.
+- `partial` means three to five fields are populated.
+- `complete` means all six fields are populated.
+
+Zero and negative numeric values count as present, even when a particular
+scoring metric requires a positive value. Blank, invalid, NaN, and infinite
+values count as missing. A high score with sparse evidence should be reviewed
+cautiously. Missing metrics may still receive V1's neutral percentile value;
+completeness does not change the score or constitute an investment
+recommendation.
+
 If a matching news row exists, the final score becomes:
 
 ```text
