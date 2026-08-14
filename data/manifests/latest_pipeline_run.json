@@ -1,9 +1,9 @@
 {
-  "run_id": "5ed9a772f93345f7976e23a6cbc4f730",
+  "run_id": "0c4efd99c30941ee8c311e043fde1742",
   "status": "success_with_warnings",
-  "started_at": "2026-08-13T14:24:19+00:00",
-  "finished_at": "2026-08-13T14:25:03+00:00",
-  "scoring_as_of": "2026-08-13",
+  "started_at": "2026-08-14T14:17:42+00:00",
+  "finished_at": "2026-08-14T14:18:19+00:00",
+  "scoring_as_of": "2026-08-14",
   "scoring_model_version": "v3_quarterly_quality",
   "sources": {
     "daily_fetch": {
@@ -14,8 +14,8 @@
       "updated": 0
     },
     "daily_market": {
-      "effective_date": "2026-08-13",
-      "input_rows": 5800,
+      "effective_date": "2026-08-14",
+      "input_rows": 6090,
       "selected_rows": 290,
       "coverage_pct": 100.0
     },
@@ -38,7 +38,7 @@
     },
     {
       "path": "data/monthly/2026-08_sector_scores.csv",
-      "rows": 2610
+      "rows": 2900
     },
     {
       "path": "data/llm/latest_sector_summary.csv",
@@ -48,7 +48,7 @@
   "warnings": [
     "quarterly quality unavailable for 98 stocks",
     "quarterly fundamentals stale for 3 stocks",
-    "volatility unavailable for 290 stocks",
+    "volatility unavailable for 2 stocks",
     "portfolio context unavailable"
   ],
   "error_type": ""
