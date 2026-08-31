@@ -1,9 +1,9 @@
 {
-  "run_id": "f9bfb74b3ffe43d8b0bbcb450d27266f",
+  "run_id": "39a2d85dab2741f4b363b824c0763ba2",
   "status": "success_with_warnings",
-  "started_at": "2026-08-28T22:58:21+00:00",
-  "finished_at": "2026-08-28T22:59:08+00:00",
-  "scoring_as_of": "2026-08-28",
+  "started_at": "2026-08-31T19:27:36+00:00",
+  "finished_at": "2026-08-31T19:28:10+00:00",
+  "scoring_as_of": "2026-08-31",
   "scoring_model_version": "v3_quarterly_quality",
   "sources": {
     "daily_fetch": {
@@ -14,8 +14,8 @@
       "updated": 0
     },
     "daily_market": {
-      "effective_date": "2026-08-28",
-      "input_rows": 8705,
+      "effective_date": "2026-08-31",
+      "input_rows": 8996,
       "selected_rows": 291,
       "coverage_pct": 100.0
     },
@@ -38,7 +38,7 @@
     },
     {
       "path": "data/monthly/2026-08_sector_scores.csv",
-      "rows": 5515
+      "rows": 5806
     },
     {
       "path": "data/llm/latest_sector_summary.csv",
